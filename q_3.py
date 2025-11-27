@@ -4,20 +4,15 @@ class node:
         self.parent = parent
         self.leftChild = leftChild
         self.rightChild = rightChild
-
 class stack:
     def __init__(self):
         self.elements = []
-
     def push(self, x):
         self.elements.append(x)
-
     def pop(self):
         return self.elements.pop(-1)
-
     def empty(self):
         return len(self.elements) == 0
-
 
 # function to do pre order traversal using the stack
 def preorder_traversal(root):
