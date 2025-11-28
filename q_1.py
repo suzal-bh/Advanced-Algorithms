@@ -4,7 +4,7 @@ def fun(n):
     luck = 0
     #roll a dice randomly 
     dice = randint(1, 6)
-    
+
     if dice == 6:
         luck = 1
     
@@ -13,7 +13,7 @@ def fun(n):
     elif n == 2:
         y = 2
     else:
-        #recursive case, compute fun(n-1) and fun(n-2)
+        # compute fun(n-1) and fun(n-2)
         first_result = fun(n - 1)
         second_result = fun(n - 2)
 
@@ -22,6 +22,7 @@ def fun(n):
 
         y = first_entry + 2 * second_entry
 
+        #add all the luck values
         luck += first_luck + second_luck
     
     #return the result as a tuple

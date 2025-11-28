@@ -9,7 +9,7 @@ class Graph:
         self.vertex_labels[index] = label
     
     def add_edge(self, source, target, weight):
-        # source to target with given weight
+        # source - target with the given weight
         # only goes one direction
         self.adjacency_matrix[source][target] = weight
     
@@ -17,7 +17,7 @@ class Graph:
         #convert the label to its index number
         start_index = self.vertex_labels.index(start_label)
 
-        #minimum cost from star to each vertex
+        #minimum cost from start to each vertex
         min_cost = [float("inf")] * self.num_vertices
         min_cost[start_index] = 0
 
@@ -25,7 +25,7 @@ class Graph:
 
         for n in range(self.num_vertices):
             
-            #select the unprocessed vertes with the smallest known cost
+            #select the unprocessed vertices with the smallest known cost
             current_vertex = self.find_smallest_vertex(min_cost, processed)
 
             if current_vertex is None:
