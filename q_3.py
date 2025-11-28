@@ -15,23 +15,41 @@ class stack:
         return len(self.elements) == 0
 
 # function to do pre order traversal using the stack
-def preorder_traversal(root):
-    result = []
+def preorder_collect(start):
 
-    if root is None:
-        return result
+    collected = []
+    nodes_to_visit = stack()
 
-    s = stack()
-    s.push(root)
+    if start is None:
+        return collected
 
-    while not s.empty():
-        current = s.pop()
-        result.append(current.value)
+    nodes_to_visit.push(start)
 
-        # push right first so left is processed first
-        if current.rightChild is not None:
-            s.push(current.rightChild)
-        if current.leftChild is not None:
-            s.push(current.leftChild)
+    while not nodes_to_visit.empty():
+        node_item = nodes_to_visit.pop()
+        collected.append(node_item.value)
 
-    return result
+        # push right before left
+        right = node_item.rightChild
+        left = node_item.leftChild
+
+        if right is not None:
+            nodes_to_visit.push(right)
+
+        if left is not None:
+            nodes_to_visit.push(left)
+
+    return collected
+
+A = node('A', None, None, None)
+B = node('B', A, None, None)
+C = node('C', A, None, None)
+D = node('D', B, None, None)
+E = node('E', B, None, None)
+
+A.leftChild = B
+A.rightChild = C
+B.leftChild = D
+B.rightChild = E
+
+print(preorder_collect(A))
