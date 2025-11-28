@@ -20,6 +20,7 @@ def preorder_collect(start):
     collected = []
     nodes_to_visit = stack()
 
+    #if the tree is empty, return empty list
     if start is None:
         return collected
 
@@ -47,6 +48,7 @@ C = node('C', A, None, None)
 D = node('D', B, None, None)
 E = node('E', B, None, None)
 
+#connect children to form the tree
 A.leftChild = B
 A.rightChild = C
 B.leftChild = D
