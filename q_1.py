@@ -15,12 +15,12 @@ def fun(n):
         first_result = fun(n - 1)
         second_result = fun(n - 2)
 
-        first_entry, luck_1 = first_result
-        second_entry, luck_2 = second_result
+        first_entry, first_luck = first_result
+        second_entry, second_luck = second_result
 
         y = first_entry + 2 * second_entry
 
-        luck += luck_1 + luck_2
+        luck += first_luck + second_luck
 
     return y, luck
 
