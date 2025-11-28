@@ -5,9 +5,12 @@ class Graph:
         self.vertex_labels = [""] * num_vertices
 
     def set_vertex_label(self, index, label):
+        # assign a lable to each vertex index like 0
         self.vertex_labels[index] = label
     
     def add_edge(self, source, target, weight):
+        # source to target with given weight
+        # only goes one direction
         self.adjacency_matrix[source][target] = weight
     
     def dijkstra(self, start_label):
@@ -36,9 +39,11 @@ class Graph:
         return min_cost
     
     def find_smallest_vertex(self, min_cost, processed):
+        #return the index of the smallest cost uprocessed vertex
         smallest_cost = float("inf")
         smallest_vertex = None
 
+        #checks every vertex 
         for v in range(self.num_vertices):
             if not processed[v] and min_cost[v] < smallest_cost:
                 smallest_cost = min_cost[v]
@@ -47,6 +52,7 @@ class Graph:
         return smallest_vertex
     
     def update_neighbour(self, current_vertex, min_cost, processed):
+        # updates cost to reach each neighbour
         for neighbour in range(self.num_vertices):
             weight = self.adjacency_matrix[current_vertex][neighbour]
 
@@ -56,8 +62,10 @@ class Graph:
                 if new_cost < min_cost[neighbour]:
                     min_cost[neighbour] = new_cost
 
+#creates a graph with 7 vertices
 g = Graph(7)
 
+#labels for each vertex
 g.set_vertex_label(0, 'A')
 g.set_vertex_label(1, 'B')
 g.set_vertex_label(2, 'C')
@@ -78,8 +86,9 @@ g.add_edge(1, 5, 2)  # B → F
 g.add_edge(6, 5, 5)  # G → F
 g.add_edge(0, 1, 1)  # A → B 
 
-
+# run dijsktra from D
 distances = g.dijkstra("D")
+
 for i, cost in enumerate(distances):
     print(f"Cost from D to {g.vertex_labels[i]}: {cost}")
 
